@@ -1,15 +1,16 @@
 import express, {Express} from "express"
 import cors from "cors"
 import dotenv from "dotenv"
-
+import { AddressInfo } from "net"
+import { UserController } from "./controller/UserController"
 dotenv.config()
 
 const app: Express = express()
-
 app.use(express.json())
 app.use(cors())
 
-import { AddressInfo } from "net"
+const userController = new UserController()
+app.post("/user/signup", userController.create)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if(server) {
