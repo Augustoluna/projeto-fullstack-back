@@ -18,6 +18,11 @@ export class UserBusiness {
 
                 const id = idGenerator.generate()
                 const hashPassword = await hashManager.hash(password)
+
+                if(!name || !password || !email || !nickname){
+                    throw new Error("All fields must be filled.")
+                }
+
                 await userDatabase.create(id, name, email, nickname, hashPassword)
 
                 const token = tokenManager.generate(id)

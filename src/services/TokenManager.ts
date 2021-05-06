@@ -13,3 +13,4 @@ export class TokenManager {
         const payload = jwt.verify(token, "Augusto")
         return payload as object
     }
+}
