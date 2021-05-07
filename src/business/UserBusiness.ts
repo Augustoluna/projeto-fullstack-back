@@ -61,7 +61,7 @@ export class UserBusiness {
             }
 
             const passwordCheck = await hashManager.compare(password, userFromDB.password)
-            
+
             if(!passwordCheck) {
                 throw new Error("Wrong Password")
             }
@@ -70,7 +70,7 @@ export class UserBusiness {
             return token
             
         } catch (error) {
-            throw new Error("Login error " + error.message)
+            throw new Error("Login error: " + error.message)
         }
     }
 
