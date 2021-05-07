@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { UserDatabase } from "../data/UserDatabase"
 import { UserBusiness } from "../business/UserBusiness"
+import { send } from "node:process";
 
 
 export class UserController {
@@ -23,6 +24,23 @@ export class UserController {
             res.status(400).send({message: error.message})
         }
 
+    }
+
+    async login(req: Request, res: Response){
+
+        const userBusiness = new UserBusiness();
+
+        try {
+
+            const email: string = req.body.email
+            const password: string = req.body.password
+
+            const token = await userBusiness.login(email, password)
+            res.status(200).send({token})
+            
+        } catch (error) {
+            res.status(400).send({message: error.message})
+        }
     }
 
 }
