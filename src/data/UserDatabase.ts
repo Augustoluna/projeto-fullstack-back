@@ -10,7 +10,7 @@ export class UserDatabase extends BaseDatabase{
         name:string,
         email:string,
         nickname:string,
-        password:string){
+        password:string): Promise<void> {
 
             try {
                 await this.getConnection()
