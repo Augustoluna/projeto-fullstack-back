@@ -3,6 +3,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 import { AddressInfo } from "net"
 import { UserController } from "./controller/UserController"
+import { ImageController } from "./controller/ImageController"
 dotenv.config()
 
 const app: Express = express()
@@ -12,6 +13,9 @@ app.use(cors())
 const userController = new UserController()
 app.post("/user/signup", userController.create)
 app.post("/user/login", userController.login)
+
+const imageController = new ImageController()
+app.post("/image/createImage", imageController.create)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if(server) {
