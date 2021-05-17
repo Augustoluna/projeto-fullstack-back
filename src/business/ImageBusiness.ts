@@ -32,19 +32,19 @@ export class ImageBusiness {
 
     async get(token: string): Promise<image[]> {
 
-        const tokenManager = new TokenManager()
-        const verifiedToken = tokenManager.get(token)
-
-        if(!verifiedToken){
-            throw new Error("Please log in")
-        }
-
-        const imageDatabase = new ImageDatabase()
-        const images: image[] = await imageDatabase.get()
-
-        return images
-
         try {
+
+            const tokenManager = new TokenManager()
+            const verifiedToken = tokenManager.get(token)
+
+            if(!verifiedToken){
+                throw new Error("Please log in")
+            }
+
+            const imageDatabase = new ImageDatabase()
+            const images: image[] = await imageDatabase.get()
+
+            return images
             
         } catch (error) {
             throw new CustomError(error.message, error.code)
