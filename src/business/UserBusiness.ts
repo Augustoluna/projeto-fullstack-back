@@ -39,7 +39,7 @@ export class UserBusiness {
                 return token
 
                 } catch (error) {
-                throw new Error("Erro ao criar: "+ error.message)
+                throw new Error("User create error: "+ error.message)
             }
             
     }

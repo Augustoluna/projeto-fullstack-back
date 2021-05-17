@@ -16,6 +16,7 @@ app.post("/user/login", userController.login)
 
 const imageController = new ImageController()
 app.post("/image/createImage", imageController.create)
+app.get("/image/", imageController.get)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if(server) {
